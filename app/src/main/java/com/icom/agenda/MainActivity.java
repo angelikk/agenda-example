@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
 
@@ -38,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         addContact("Benito", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
         addContact("Bruja", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
 
+        ContactsRecyclerViewAdapter adapter = new ContactsRecyclerViewAdapter(contactBeenList);
 
+        rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rvContacts.setAdapter(adapter);
 
     }
 
