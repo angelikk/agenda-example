@@ -7,12 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private static String DNI = "dni";
     private static String NAME = "name";
     private static String TELEPHONE = "telephone";
@@ -33,12 +36,16 @@ public class MainActivity extends AppCompatActivity {
         etSearch = (EditText) findViewById(R.id.et_search);
         rvContacts = (RecyclerView) findViewById(R.id.rv_contactsList);
 
+        contactBeenList = new ArrayList<>();
+
         addContact("Ufemia", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
         addContact("Joseshuy", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
         addContact("Toby", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
         addContact("Benito", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
         addContact("Bruja", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
 
+        Log.i(TAG, "onCreate: ContactsBeanList size: " + contactBeenList.size());
+        
         ContactsRecyclerViewAdapter adapter = new ContactsRecyclerViewAdapter(contactBeenList);
 
         rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
