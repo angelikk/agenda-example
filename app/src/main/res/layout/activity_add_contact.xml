@@ -44,28 +44,32 @@
         android:id="@+id/et_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textCapWords"
-        android:hint="Nombre" />
+        android:hint="Nombre"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords" />
 
     <EditText
         android:id="@+id/et_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:hint="Teléfono" />
+        android:hint="Teléfono"
+        android:imeOptions="actionNext"
+        android:inputType="phone" />
 
     <EditText
         android:id="@+id/et_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="Email" />
+        android:hint="Email"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/et_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textCapWords"
-        android:hint="Dirección" />
+        android:hint="Dirección"
+        android:imeOptions="actionDone"
+        android:inputType="textCapWords" />
 
 </LinearLayout>
