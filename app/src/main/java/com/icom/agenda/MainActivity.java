@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rvContacts = (RecyclerView) findViewById(R.id.rv_contactsList);
         ivAddContact = (ImageView) findViewById(R.id.iv_addContact);
 
+        ivAddContact.setOnClickListener(this);
+
         contactBeenList = new ArrayList<>();
 
         addContact("Ufemia", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
