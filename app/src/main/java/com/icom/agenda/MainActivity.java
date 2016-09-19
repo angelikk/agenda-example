@@ -1,6 +1,7 @@
 package com.icom.agenda;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,12 +9,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "MainActivity";
     private static String DNI = "dni";
@@ -27,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private List<ContactBean> contactBeenList;
     private EditText etSearch;
     private RecyclerView rvContacts;
+    private ImageView ivAddContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         etSearch = (EditText) findViewById(R.id.et_search);
         rvContacts = (RecyclerView) findViewById(R.id.rv_contactsList);
+        ivAddContact = (ImageView) findViewById(R.id.iv_addContact);
 
         contactBeenList = new ArrayList<>();
 
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         addContact("Bruja", "1234-5678", "ufemia@mail.com", "Avenida Siempre Viva 18", null);
 
         Log.i(TAG, "onCreate: ContactsBeanList size: " + contactBeenList.size());
-        
+
         ContactsRecyclerViewAdapter adapter = new ContactsRecyclerViewAdapter(contactBeenList);
 
         rvContacts.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
@@ -81,7 +86,13 @@ public class MainActivity extends AppCompatActivity {
         database.close();
     }
 
-    public void addContact() {
-        // aqui cuando se da click al boton +
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_addContact:
+                Intent intent = new Intent(this, AddContactActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }

@@ -1,11 +1,14 @@
 package com.icom.agenda;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.LoginFilter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -14,6 +17,7 @@ import java.util.List;
  */
 public class ContactsRecyclerViewAdapter extends RecyclerView.Adapter<ContactsRecyclerViewAdapter.ContactViewHolder> {
 
+    private static final String TAG = "RecyclerViewAdapter";
     private List<ContactBean> contactBeanList;
 
     public ContactsRecyclerViewAdapter(List<ContactBean> contactBeanList) {
@@ -37,7 +41,7 @@ public class ContactsRecyclerViewAdapter extends RecyclerView.Adapter<ContactsRe
         return contactBeanList.size();
     }
 
-    class ContactViewHolder extends RecyclerView.ViewHolder {
+    class ContactViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView ivPicture;
         private TextView tvContactName;
@@ -47,6 +51,15 @@ public class ContactsRecyclerViewAdapter extends RecyclerView.Adapter<ContactsRe
 
             ivPicture = (ImageView) itemView.findViewById(R.id.iv_contact);
             tvContactName = (TextView) itemView.findViewById(R.id.tv_contactName);
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.ll_item_recyclerView:
+                    Log.i(TAG, "onClick: Contact Detail");
+                    break;
+            }
         }
     }
 }
